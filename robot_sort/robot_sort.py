@@ -96,15 +96,33 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        self.swap_item() # here we are picking up the first item in the list
+        self.swap_item() 
+        # here we are picking up the first item in the list
 
-        while True: # creating a loop 
-            while self.can_move_right(): # checking if we can move right
-                self.move_right() # if we can, move right.
-                if self.compare_item() == 1: # the returned value is 1
-                                    # Compare the held item with the item in front of the robot:
-                                    # If the held item's value is greater, return 1. (compare_item() method response)
+        while True: 
+            # creating a loop 
+            while self.can_move_right(): 
+                # checking if we can move right
+                self.move_right() 
+                # if we can, move right.
+                if self.compare_item() == 1: 
+                    # the returned value is 1
+                    # Compare the held item with the item in front of the robot:
+                    # If the held item's value is greater, return 1. (compare_item() method response)
                     self.swap_item()
+                    # if returned boolean is true, swap the items
+                    # trhe robot should now be at the end of the list holding the largest item
+
+            while self.compare_item() is not None:
+                self.move_left() 
+                    # here we move back to the left index back to where we started
+
+                self.swap_item()
+                if not self.can_move_right():
+                    return 
+                    #returning true or false boolean
+                self.move_right()
+                self.swap_item()
 
 
 
