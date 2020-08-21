@@ -81,11 +81,13 @@ class SortingRobot:
         Turn on the robot's light
         """
         self._light = "ON"
+
     def set_light_off(self):
         """
         Turn off the robot's light
         """
         self._light = "OFF"
+
     def light_is_on(self):
         """
         Returns True if the robot's light is on and False otherwise.
@@ -96,44 +98,51 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        self.swap_item() 
+        # Selection sort resemblence, using the predefined methods with pythonic swapping.
+    # TC: O(n^2)
+        # The inner loop iterate n-1 when i is equal to 1, and then n-2 as i is equal to 2 and so forth.
+        # The amount of comparisons are (n - 1) + (n - 2) + ... + 1 , which gives Selection Sort a time complexity of O(n^2).
+        # selection sort is an in-place comparison sorting algorithm.
+        # It has an O(n2) time complexity, which makes it inefficient on large lists,
+        # and generally performs worse than the similar insertion sort. - Will keep this in mind for future development.
+
+    # SC: O(1)
+        #
+        self.swap_item()
         # here we are picking up the first item in the list
 
-        while True: 
-            # creating a loop 
-            while self.can_move_right(): 
+        while True:
+            # creating a loop
+            while self.can_move_right():
                 # checking if we can move right
-                self.move_right() 
+                self.move_right()
                 # if we can, move right.
-                if self.compare_item() == 1: 
+                if self.compare_item() == 1:
                     # the returned value is 1
                     # Compare the held item with the item in front of the robot:
                     # If the held item's value is greater, return 1. (compare_item() method response)
                     self.swap_item()
                     # if returned boolean is true, swap the items
-                    # trhe robot should now be at the end of the list holding the largest item
+                    # the robot should now be at the end of the list holding the largest item
 
             while self.compare_item() is not None:
-                self.move_left() 
-                    # here we move back to the left index back to where we started
+                self.move_left()
+                # here we move back to the left index back to where we started
 
             self.swap_item()
             if not self.can_move_right():
-                return 
-                 #returning true or false boolean
+                return
+                # returning None, can break or use the return because None is Falsy
             self.move_right()
             self.swap_item()
-
-
-
-
 
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
-    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1,
+         45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
     robot = SortingRobot(l)
 
