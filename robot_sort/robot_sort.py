@@ -117,12 +117,12 @@ class SortingRobot:
                 self.move_left() 
                     # here we move back to the left index back to where we started
 
-                self.swap_item()
-                if not self.can_move_right():
-                    return 
-                    #returning true or false boolean
-                self.move_right()
-                self.swap_item()
+            self.swap_item()
+            if not self.can_move_right():
+                return 
+                 #returning true or false boolean
+            self.move_right()
+            self.swap_item()
 
 
 
