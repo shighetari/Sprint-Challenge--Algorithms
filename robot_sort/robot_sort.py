@@ -96,8 +96,19 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        self.swap_item() # here we are picking up the first item in the list
+
+        while True: # creating a loop 
+            while self.can_move_right(): # checking if we can move right
+                self.move_right() # if we can, move right.
+                if self.compare_item() == 1: # the returned value is 1
+                                    # Compare the held item with the item in front of the robot:
+                                    # If the held item's value is greater, return 1. (compare_item() method response)
+                    self.swap_item()
+
+
+
+
 
 
 if __name__ == "__main__":
